@@ -20,7 +20,7 @@ public class BankSite {
 		number = sc.nextLine();
 
 		System.out.println("회원 가입이 완료되었습니다. 로그인을 해 주세요.");
-/* ========================= 2단계 =============================== */
+		/* ========================= 2단계 =============================== */
 		String name2;
 		int strPassword;
 
@@ -29,12 +29,11 @@ public class BankSite {
 		System.out.print("패스워드: ");
 		strPassword = Integer.parseInt(sc.nextLine());
 
-		
 		boolean check = false;
-		if (name.equals(name)) {
+		if (name2.equals(name)) {
 			if (strPassword == password) {
 				System.out.println("로그인 성공");
-				check=true;
+				check = true;
 			} else {
 				System.out.println("로그인 실패:패스워드가 틀림");
 			}
@@ -42,8 +41,8 @@ public class BankSite {
 		} else {
 			System.out.println("로그인 실패:아이디 존재하지 않음");
 		}
-/* ========================= 3단계 =============================== */
-		if(check) {
+		/* ========================= 3단계 =============================== */
+		if (check) {
 			boolean run = true;
 			int balance = 0;
 
@@ -75,7 +74,7 @@ public class BankSite {
 				}
 			}
 			sc.close();
-			System.out.println("프로그램 종료"); 
+			System.out.println("프로그램 종료");
 		}
 	}
 }

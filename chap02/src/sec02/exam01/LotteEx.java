@@ -20,17 +20,7 @@ public class LotteEx {
 			}
 		}
 		
-		Arrays.sort(numbers); //밑에 과정 의미없네
-//		int temp;
-//		for(int i=0;i<numbers.length;i++) {
-//			for(int j=0;j<i;j++) {
-//				if(numbers[i]<numbers[j]) {
-//				temp=numbers[i];
-//				numbers[i]=numbers[j];
-//				numbers[j]=temp;
-//				}
-//			}
-//		}
+		Arrays.sort(numbers);
 		
 		System.out.print("이번 주 추천 로또 번호는 ");
 		for(int number:numbers) {
