@@ -12,6 +12,7 @@ public class BankSite3 {
 	private static int choose1;
 	private static boolean firstCheck = true;
 	private static boolean check = false;
+	private static boolean signUpCheck = false;
 
 	public static void main(String[] args) {
 
@@ -49,6 +50,7 @@ public class BankSite3 {
 	}
 
 	private static void login(Scanner sc) {
+		
 		System.out.print("아이디: ");
 		name2 = sc.nextLine();
 		System.out.print("패스워드: ");
@@ -67,6 +69,7 @@ public class BankSite3 {
 	}
 
 	private static void signUp(Scanner sc) {
+		if(signUpCheck==false) {
 		System.out.println("[필수 정보 입력]");
 		System.out.print("1. 이름: ");
 		name = sc.nextLine();
@@ -74,8 +77,17 @@ public class BankSite3 {
 		password = Integer.parseInt(sc.nextLine());
 		System.out.println("3. 전화번호: ");
 		number = sc.nextLine();
+		signUpCheck=true;
 
 		System.out.println("회원 가입이 완료되었습니다. 로그인을 해 주세요.");
+		} else {
+			System.out.println("이미 가입된 회원입니다. 다시 가입하시겠습니까?(y/n)");
+			String answer=sc.nextLine();
+			if(answer.equals("y")){
+				signUpCheck=false;
+				signUp(sc);
+			}
+		}
 	}
 
 	private static void moneyMove(Scanner sc) {
