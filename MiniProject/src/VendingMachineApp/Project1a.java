@@ -1,4 +1,4 @@
-package BandingMachineApp;
+package VendingMachineApp;
 
 import java.util.Scanner;
 

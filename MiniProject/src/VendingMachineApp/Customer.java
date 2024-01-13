@@ -1,4 +1,4 @@
-package BandingMachineApp;
+package VendingMachineApp;
 
 public class Customer {
 	

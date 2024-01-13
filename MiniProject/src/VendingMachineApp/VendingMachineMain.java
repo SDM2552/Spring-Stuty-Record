@@ -1,7 +1,7 @@
-package BandingMachineApp;
+package VendingMachineApp;
 
 
-public class BandingMachine {
+public class VendingMachineMain {
 
 
 	
