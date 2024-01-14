@@ -1,5 +1,5 @@
-package VendingMachineApp;
+package src.VendingMachineApp;
 
 public class Admin {
-
+	
 }
