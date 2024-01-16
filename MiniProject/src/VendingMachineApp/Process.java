@@ -5,7 +5,7 @@ import java.util.Scanner; //머신에 넣었는데 또 넣어야 함?
 public class Process {
 
 	private int insert; // 투입한 금액
-	int coin;
+	private int coin;	// 입력값을 받아서 넘기는 형식이어야 하는거같음..
 	private int income; // 자판기 수익
 	
 	
