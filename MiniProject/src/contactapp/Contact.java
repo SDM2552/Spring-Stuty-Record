@@ -6,7 +6,7 @@ public class Contact {
 
 	int selectNum;
 	Scanner sc= new Scanner(System.in);
-	TaskProcessor taskProcessor = new TaskProcessor();
+	TaskProcessor2 taskProcessor2 = new TaskProcessor2(); //2를 붙이면
 
 	public void run(){
 
@@ -19,15 +19,15 @@ public class Contact {
 			
 			case 1: // 등록
 				System.out.println("등록");
-				taskProcessor.register(sc);
+				taskProcessor2.register(sc);
 				break;
 			case 2: //보기
 				System.out.println("보기");
-				taskProcessor.search();
+				taskProcessor2.search();
 				break;
 			case 3: //삭제
 				System.out.println("삭제");
-				taskProcessor.delete(sc);
+				taskProcessor2.delete(sc);
 				break;
 			case 4: //종료
 				System.out.println("종료");
