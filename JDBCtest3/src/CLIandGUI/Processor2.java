@@ -62,7 +62,7 @@ public class Processor2 implements CRUD{
 				comm = rs.getDouble("comm");
 				deptno = rs.getInt("deptno");
 
-				String str = String.format("%d,%s,%s,%d,%s,%2f,%2f,%d\n", empno, ename, job, mgr, hiredate, sal, comm,
+				String str = String.format("%d, %s, %s, %d, %s, %,.2f %,.2f %d\n", empno, ename, job, mgr, hiredate, sal, comm,
 						deptno);
 				ta.append(str);
 			}
@@ -110,13 +110,10 @@ public class Processor2 implements CRUD{
 				tf6.setText(Double.toString(sal));
 				tf7.setText(Double.toString(comm));
 				tf8.setText(String.valueOf(deptno));
-
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 //========================== 데이터 수정 ========================================

@@ -40,15 +40,15 @@ public class GUITest extends JFrame {
 	Connection conn;
 	Statement stmt;
 	private CRUD processor2;
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/firm";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "mysql";
 
 	public GUITest() {
-		String url = "jdbc:mysql://localhost:3306/firm";
-		String id = "root";
-		String pass = "mysql";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(url, id, pass);
+			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			stmt = conn.createStatement();
 			processor2 = new Processor2(stmt, ta, tf1, tf2, tf3, tf4, tf5, tf6, tf7, tf8);
 

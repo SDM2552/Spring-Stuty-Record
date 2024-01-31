@@ -24,7 +24,7 @@ public class CLITest {
 			int selectNum;
 
 			while (true) {
-				System.out.println("1. 보기 | 2. 등록 | 3. 수정 | 4.삭제 | 5.종료");
+				System.out.println("1.보기 | 2.등록 | 3.수정 | 4.삭제 | 5.종료");
 				System.out.print("선택> ");
 
 				switch (selectNum = Integer.parseInt(sc.nextLine())) {

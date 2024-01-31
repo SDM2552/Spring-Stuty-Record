@@ -56,8 +56,6 @@ public class Processor implements CRUD {
 //========================== 데이터 입력 ========================================
 	public void insertData() {
 		try (Statement stmt = conn.createStatement();) { // try-with-resources
-//			stmt=conn.createStatement();
-
 			int empno;
 			String ename;
 			String job;
@@ -104,24 +102,6 @@ public class Processor implements CRUD {
 		}
 	}
 
-//========================== 데이터 삭제 ========================================
-	public void deleteData() {
-		try (Statement stmt = conn.createStatement();) {
-			System.out.println("누구를 삭제하시겠습니까?");
-			System.out.print("이름 입력> ");
-			String ename = sc.nextLine();
-			String sql = "delete from emp where ename = '" + ename + "'";
-			int result = stmt.executeUpdate(sql);
-			if (result >= 1) {
-				System.out.println("삭제 성공!");
-			} else {
-				System.out.println("삭제 실패!");
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 //========================== 데이터 수정 ========================================	
 	public void updateData() {
@@ -184,9 +164,24 @@ public class Processor implements CRUD {
 
 	}
 
-
-
-
+//========================== 데이터 삭제 ========================================
+	public void deleteData() {
+		try (Statement stmt = conn.createStatement();) {
+			System.out.println("누구를 삭제하시겠습니까?");
+			System.out.print("이름 입력> ");
+			String ename = sc.nextLine();
+			String sql = "delete from emp where ename = '" + ename + "'";
+			int result = stmt.executeUpdate(sql);
+			if (result >= 1) {
+				System.out.println("삭제 성공!");
+			} else {
+				System.out.println("삭제 실패!");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 //========================== 끝 ========================================
 }
