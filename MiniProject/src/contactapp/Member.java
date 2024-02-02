@@ -1,6 +1,8 @@
 package contactapp;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable{
 
 	String name;
 	String tel;

@@ -1,14 +1,21 @@
 package contactapp;
 
-import java.sql.Array;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class TaskProcessor2 {
 	Scanner sc = new Scanner(System.in);
-	ArrayList<Member> contactlist2 = new ArrayList<>(); //생성
+	ArrayList<Member> contactlist2 = new ArrayList<>(); // 생성
 
 //	private String[][] contactList = new String[10][3]; // 10명 까지 등록 가능
 	int number = 0; // 등록번호
@@ -39,9 +46,6 @@ public class TaskProcessor2 {
 		for (int i = 0; i < number; i++) {
 			System.out.print(i + 1 + ". ");
 			System.out.println(contactlist2.get(i));
-//			System.out.print("\t전화번호: " + contactList[i][1]);
-//			System.out.println("\t이메일: " + contactList[i][2]);
-
 		}
 	}
 
@@ -50,38 +54,55 @@ public class TaskProcessor2 {
 		System.out.print("삭제할 사람의 이름: ");
 		deleteMember = sc.nextLine();
 		Iterator<Member> iterator = contactlist2.iterator();
-	    while (iterator.hasNext()) {
-	        Member row = iterator.next();
-	        if (row.getName().equals(deleteMember)) {
-	            iterator.remove();
-	            System.out.println(deleteMember + "님의 정보가 삭제되었습니다.");
-	            number--;
-	            break;
-	        }
-	    }
-		
-//		boolean found = false;
-//
-//		for (int i = 0; i < number; i++) { // 리스트에서 검색
-//			if (contactList[i][0].equals(deleteMember)) { // 해당 사람을 찾으면
-//				found = true;
-//
-//				for (int j = 0; j < 3; j++) {
-//					target[i][j] = contactList[i][j]; // 타겟=삭제할사람
-//				}
-//				for (int j = i; j < number - 1; j++) {
-//					for (int k = 0; k < 3; k++) {
-//						contactList[j][k] = contactList[j + 1][k];
-//					}
-//				}
-//				System.out.println(deleteMember + "을(를) 삭제했습니다.");
-//				number--;
-//				break;
-//			}
-//		}
-//		if (!found) {
-//			System.out.println("해당 이름이 없습니다.");
-//		}
+		while (iterator.hasNext()) {
+			Member row = iterator.next();
+			if (row.getName().equals(deleteMember)) {
+				iterator.remove();
+				System.out.println(deleteMember + "님의 정보가 삭제되었습니다.");
+				number--;
+				break;
+			}
+		}
 	}
 
+	// 4.저장
+	public void saveToFile() throws IOException {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:/temp/member.db"))) {
+			oos.writeObject(contactlist2);
+			System.out.println("저장 완료");
+		} catch (IOException e) {
+			System.out.println("저장 중 오류가 발생했습니다.");
+			e.printStackTrace();
+		}
+	}
+
+	// 5.로드
+	public void loadFronFile() throws IOException, ClassNotFoundException {
+		
+	
+//		FileInputStream fis = new FileInputStream("C:/temp/member.db");
+//		ObjectInputStream ois = new ObjectInputStream(fis);
+//		ArrayList<Member> loadedList = (ArrayList<Member>) ois.readObject();
+//		contactlist2.clear();
+//		contactlist2.addAll(loadedList);
+//		System.out.println("로드 완료");
+		 try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:/temp/member.db"))) {
+		        ArrayList<Member> loadedList = (ArrayList<Member>) ois.readObject();
+		        contactlist2.clear();
+		        contactlist2.addAll(loadedList);
+		        System.out.println("로드 완료");
+		    } catch (FileNotFoundException e) {
+		        System.out.println("파일을 찾을 수 없습니다.");
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        System.out.println("로드 중 오류가 발생했습니다.");
+		        e.printStackTrace();
+		    } catch (ClassNotFoundException e) {
+		        System.out.println("클래스를 찾을 수 없습니다.");
+		        e.printStackTrace();
+		    }
+	
+		
+
+	}
 }

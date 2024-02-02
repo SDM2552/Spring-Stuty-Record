@@ -3,7 +3,6 @@ package contactapp;
 import java.util.Scanner;
 
 public class TaskProcessor {
-	Scanner sc = new Scanner(System.in);
 
 	private String[][] contactList = new String[10][3]; // 10명 까지 등록 가능
 	int number = 0; // 등록번호

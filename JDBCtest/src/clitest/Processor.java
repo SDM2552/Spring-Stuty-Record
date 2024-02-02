@@ -133,8 +133,8 @@ public class Processor {
 			String searchEmpno = sc.nextLine();
 			String sql = "select * from emp where empno = '"+searchEmpno+"';";
 			
-			try(ResultSet rs = stmt.executeQuery(sql);){ // ResultSet를 먼저 닫는다
-				while (rs.next()) { //------------------ 선택한 레이어 출력 
+			try(ResultSet rs = stmt.executeQuery(sql);){ // 입력한 사람의 데이터 출력
+				while (rs.next()) {
 					int empno = rs.getInt("empno");
 					String ename = rs.getString("ename");
 					String job = rs.getString("job");

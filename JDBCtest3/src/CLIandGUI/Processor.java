@@ -148,6 +148,7 @@ public class Processor implements CRUD {
 						int result = stmt.executeUpdate(updateSql);
 						if (result >= 1) {
 							System.out.println("수정 성공!");
+						
 							return;
 						} else {
 							System.out.println("수정 실패!");

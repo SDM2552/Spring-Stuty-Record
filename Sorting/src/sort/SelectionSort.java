@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.Arrays;
+
 public class SelectionSort {
 
 	public static void selectionSort(int[] arr) {
@@ -28,9 +30,10 @@ public class SelectionSort {
 		int[] arr= {6,10,1,25,9,13};
 		selectionSort(arr);
 		
-		for(int num:arr) {
-			System.out.print(num+" ");
-		}
+//		for(int num:arr) {
+//			System.out.print(num+" ");
+//		}
+		System.out.println(Arrays.toString(arr));
 	}
 
 }
