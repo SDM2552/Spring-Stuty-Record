@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script defer src="cusstom.js"></script>
+</head>
+
+<body>
+	<!-- absolute로 특정요소 위치를 변경하기 -->
+	<div class="wrap">
+		<div class="left">
+		</div>
+
+		<div class="right">
+			<p class="box"></p>
+		</div>
+
+		<div class="bottom">
+		</div>
+	</div>
+	<button onclick="moveRight()">오른쪽으로</button>
+	<button onclick="moveBottom()">아래로</button>
+
+	<script>
+		let div = document.querySelector('.box').style;
+		div.backgroundColor = 'green';
+		div.position = 'absolute';
+		let rightDiv = document.querySelector('.wrap .right').style;
+		rightDiv.position = 'relative';
+		// div.left = '20px';
+		// div.bottom = '30px';
+		let i = 5;
+		function moveBottom() {
+			div.top = i + 'px';
+			i += 5;
+		}
+
+		function moveRight() {
+			div.right = i + 'px'
+			i += 5;
+			console.log(num);
+
+		}
+	</script>
+</body>
+
+</html>

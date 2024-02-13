@@ -1,0 +1,31 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+.wrap {
+    width: 800px;
+    margin: 100px auto;
+    border: 5px solid black;
+}
+.wrap .left {
+    width: 400px;
+    height: 400px;
+    background-color: pink;
+    float: left;
+}
+
+.wrap .right {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    float: left;
+}

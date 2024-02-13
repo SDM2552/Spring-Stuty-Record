@@ -1,0 +1,12 @@
+
+
+article {
+    width: 20%;
+    height: 20%;
+    border: 1px solid red;
+}
+
+article:nth-of-type(2){
+    padding:30px;
+    box-sizing: border-box;
+}
