@@ -76,7 +76,6 @@ public class MemberDao {
 	    try ( 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);            
 	    ) {
-	        
 	        // 쿼리 실행
 	    	pstmt.setString(1, member.getId());
 	    	pstmt.setString(2, BCrypt.hashpw(member.getPw(), BCrypt.gensalt(10))); //BCrypt.hashpw(member.getPw(), BCrypt.gensalt(10))
@@ -89,6 +88,12 @@ public class MemberDao {
 	        e.printStackTrace();
 	    } 
 		return 0;
+	}
+	
+	public boolean isValidMember(Member member) { //공백 가입 방지용
+		return member != null && !member.getId().trim().isEmpty() 
+				&& !member.getPw().trim().isEmpty() 
+				&& !member.getName().trim().isEmpty();
 	}
 	
 	public int update(Member member) {

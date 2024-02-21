@@ -25,12 +25,13 @@
                 history.back()
             </script>
 <%          
-        } else {           
+        } else {   	
             Member member1 = new Member(request.getParameter("id"  ),
                     request.getParameter("pw"  ),
                     request.getParameter("name"));
             MemberDao.getInstance().insert(member1);
             System.out.println("가입 성공");
+        	
 %>
             <script>
                 alert('가입이 완료되었습니다.');
