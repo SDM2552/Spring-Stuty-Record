@@ -1,3 +1,4 @@
+<%@page import="util.Cookies"%>
 <%@page import="dto.Member"%>
 <%@page import="dao.MemberDao"%>
 <%@page import="javax.servlet.http.Cookie" %>
@@ -7,6 +8,14 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	Member member = MemberDao.getInstance().selectForLogin(id, pw);
+	
+	String remember = request.getParameter("remember");
+	String rememberId = request.getParameter("id");
+	if (remember != null && remember.equals("on")) {
+		response.addCookie(Cookies.createCookie("rememberId", rememberId, "/", 60 * 60 * 24));
+	} else {
+		response.addCookie(Cookies.createCookie("rememberId", "", "/", 0));
+	}
 	
 	if(member != null){
 	session.setAttribute("userId", member.getId());
