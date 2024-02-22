@@ -11,8 +11,10 @@
 	
 	String remember = request.getParameter("remember");
 	String rememberId = request.getParameter("id");
+	System.out.println(remember);
 	if (remember != null && remember.equals("on")) {
 		response.addCookie(Cookies.createCookie("rememberId", rememberId, "/", 60 * 60 * 24));
+		System.out.println("생성된 쿠키: " + request.getParameter("remember") + "+" + request.getParameter("id"));
 	} else {
 		response.addCookie(Cookies.createCookie("rememberId", "", "/", 0));
 	}

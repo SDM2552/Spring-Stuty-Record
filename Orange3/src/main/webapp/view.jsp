@@ -40,6 +40,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    
     <style>
         table { width:680px; text-align:center; }
         th    { width:100px; background-color:cyan; }

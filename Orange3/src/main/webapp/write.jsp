@@ -35,6 +35,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<!-- 클래식 에디터 -->
+	<script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+	<title>Home</title>
+	
+	<!-- 넓이 높이 조절 -->
+	<style>
+	.ck.ck-editor {
+    	max-width: 700px;
+	}
+	.ck-editor__editable {
+	    min-height: 300px;
+	}
+	</style>
     <style>
         table { width:680px; text-align:center; }
         th    { width:100px; background-color:cyan; }
@@ -59,7 +74,8 @@
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea name="content" rows="10"><%=content%></textarea>
+           <td>
+                <textarea name="content" id="editor"><%=content%></textarea>
             </td>
         </tr>
     </table>
@@ -68,6 +84,16 @@
     <input type="submit" value="저장">
     <input type="button" value="취소" onclick="history.back()">
 </form>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ))
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
 
 </body>
 </html>

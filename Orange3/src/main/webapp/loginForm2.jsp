@@ -1,6 +1,12 @@
+<%@page import="util.Cookies"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	Cookies cookies = new Cookies(request);
+%>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="/assets/js/color-modes.js"></script>
+  <head><script src="assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +21,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -93,7 +99,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
+    <link href="css/sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -149,30 +155,43 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
-    <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+  <form action="login.jsp" method="post">
+    <img class="mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">로그인</h1>
+<%
+	if(cookies.exists("rememberId")){
+%>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="text" name="id" value="<%=cookies.getValue("rememberId")%>" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">ID 입력</label>
     </div>
+<%
+	} else {
+%>
+	<div class="form-floating">
+      <input type="text" name="id" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">ID 입력</label>
+    </div>
+<%
+	}
+%>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" name="pw" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password 입력</label>
     </div>
 
     <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+      <input class="form-check-input" type="checkbox" name = "remember" checked  id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
-        Remember me
+        아이디 기억하기
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-primary w-100 py-2" type="submit" style="margin-bottom: 10px;">로그인</button><br>
+    <button class="btn btn-primary w-100 py-2" type="button" onclick="window.location.href='memberJoinForm.jsp';">회원 가입</button>
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
   </form>
 </main>
-<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
