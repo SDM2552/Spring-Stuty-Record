@@ -1,9 +1,12 @@
 package dto;
 
 public class Member {
+	private int numId;
 	private String id;
 	private String pw;
 	private String name;
+	
+	
 	
 	public Member(String id, String pw, String name) {
 		super();
@@ -12,6 +15,21 @@ public class Member {
 		this.name = name;
 	}
 
+	public Member(int numId, String id, String pw, String name) {
+		super();
+		this.numId = numId;
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+	}
+	
+	
+	public int getNumId() {
+		return numId;
+	}
+	public void setNumId(int numId) {
+		this.numId = numId;
+	}
 	public String getId() {
 		return id;
 	}
@@ -33,9 +51,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", pw=" + pw + ", name=" + name + "]";
+		return "Member [numId=" + numId + ", id=" + id + ", pw=" + pw + ", name=" + name + "]";
 	}
-	
-	
+
+
 	
 }

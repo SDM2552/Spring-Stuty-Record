@@ -10864,9 +10864,9 @@ tr:nth-child(even) {
 tr:nth-child(even) td:nth-child(2) {
   font-size: 14px;
   color: #bbb;
-  text-align: right;
-  
+  text-align: right; 
 }
+
 a {
   text-decoration: none; /* 링크의 밑줄을 제거합니다. */
   color: inherit; /* 링크의 색상을 부모 요소로부터 상속받습니다. */

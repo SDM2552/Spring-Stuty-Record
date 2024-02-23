@@ -90,13 +90,13 @@
                                     <tr>
                                         <td>댓글내용내용내용내용내용내용내용내용내용내용내용내용내용</td>
                                         <td>2024/02/23 10:10:10</td>
-                                        <td><a href="#"><i class="fa-solid fa-x"></i></a></td>
+                                        <td><a href="#"><i class="fa-solid fa-square-xmark"></i></a></td>
                                     </tr>
                                     <td>작성자2</td>
                                     <tr>
                                         <td>댓글내용내용내용내용내용내용내용내용내용내용내용내용내용</td>
                                         <td>2024/02/23 10:10:10</td>
-                                        <td><a href="#"><i class="fa-solid fa-x"></i></a></td>
+                                        <td><a href="#"><i class="fa-solid fa-square-xmark"></i></a></td>
                                     </tr>
                                 </table>
                                 <!-- </div> -->

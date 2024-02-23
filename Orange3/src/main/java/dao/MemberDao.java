@@ -23,8 +23,8 @@ public class MemberDao {
 
 	public static void getConnection() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project1", "root", "mysql");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,7 +32,7 @@ public class MemberDao {
 	
 	public Member selectForLogin(String id, String pw) { //로그인용
 		Member member=null;
-		String sql = "select * from secured_member where id=?";
+		String sql = "select * from smember where id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -41,7 +41,7 @@ public class MemberDao {
 			
 			if(rs.next()) {
 				if(BCrypt.checkpw(pw, rs.getString("pw"))) {
-				member = new Member(rs.getString("id"), rs.getString("pw"), rs.getString("name"));
+				member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"), rs.getString("name"));
 				}
 			}
 		} catch (SQLException e) {
@@ -53,14 +53,14 @@ public class MemberDao {
 	
 	public Member select(String id) {
 		Member member = null;
-		String sql = "select * from secured_member where id = ?";
+		String sql = "select * from smember where id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				member = new Member(rs.getString("id"), rs.getString("pw"),
+				member = new Member(rs.getInt(Integer.parseInt("numId")), rs.getString("id"), rs.getString("pw"),
 						            rs.getString("name"));
 
 			}
@@ -72,7 +72,7 @@ public class MemberDao {
 	}
 	
 	public int insert(Member member) { //회원가입
-		String sql = "insert into secured_member(id, pw, name) values (?,?,?)";
+		String sql = "insert into smember(numId, id, pw, name) values (sql_smember.nextval,?,?,?)";
 	    try ( 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);            
 	    ) {
@@ -97,7 +97,7 @@ public class MemberDao {
 	}
 	
 	public int update(Member member) {
-		String sql = "update secured_member set name=? where id=?";
+		String sql = "update smember set name=? where id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
