@@ -59,7 +59,7 @@
         <tr>
             <td><%=bo.getNum()%></td>
             <td style="text-align:left;">
-                <a href="view.jsp?num=<%=bo.getNum()%>">
+                <a href="post.jsp?num=<%=bo.getNum()%>">
                     <%=bo.getTitle()%>
                 </a>
             </td>
