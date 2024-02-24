@@ -74,7 +74,7 @@
 </div>
 
 <div class="container" style="padding-top: 50px;">
-<input type="button" value="글쓰기" class="btn btn-outline-primary" onclick="location.href='write.jsp'">
+<input type="submit" value="글쓰기" class="btn btn-outline-primary" onclick="location.href='writeForm.jsp'">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

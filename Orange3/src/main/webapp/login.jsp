@@ -13,16 +13,18 @@
 	String rememberId = request.getParameter("id");
 	System.out.println(remember);
 	if (remember != null && remember.equals("on")) {
-		response.addCookie(Cookies.createCookie("rememberId", rememberId, "/", 60 * 60 * 24));
-		System.out.println("생성된 쿠키: " + request.getParameter("remember") + "+" + request.getParameter("id"));
+		response.addCookie(Cookies.createCookie("rememberId", rememberId, "/", 60 * 60));
+		System.out.println("생성된 쿠키: " + request.getParameter("remember")+" + "+request.getParameter("id"));
 	} else {
 		response.addCookie(Cookies.createCookie("rememberId", "", "/", 0));
 	}
 	
 	if(member != null){
+	session.setAttribute("userNumId", member.getNumId());
 	session.setAttribute("userId", member.getId());
 	session.setAttribute("userName", member.getName());
 	response.sendRedirect("index.jsp");
+	System.out.println("세션에 저장된 값: " +member.getNumId()+" + "+member.getId()+" + "+member.getName() );
 	return;
 	}
 %>

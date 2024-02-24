@@ -53,7 +53,7 @@ public class Member {
 	public String toString() {
 		return "Member [numId=" + numId + ", id=" + id + ", pw=" + pw + ", name=" + name + "]";
 	}
-
+	
 
 	
 }

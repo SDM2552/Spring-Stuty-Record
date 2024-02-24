@@ -51,18 +51,19 @@ public class MemberDao {
 		return member;	
 	}
 	
-	public Member select(String id) {
+	public Member select(int numId) { //회원 정보 수정을 위한 값 가져오기
 		Member member = null;
-		String sql = "select * from smember where id = ?";
+		String sql = "select * from smember where numid = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, numId);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				member = new Member(rs.getInt(Integer.parseInt("numId")), rs.getString("id"), rs.getString("pw"),
+				member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"),
 						            rs.getString("name"));
-
+				System.out.println("select()의 member에 저장된 값: "+rs.getInt("numId")+ rs.getString("id")+ rs.getString("pw")+
+			            rs.getString("name")); //디버그용
 			}
 
 		} catch (SQLException e) {
@@ -96,7 +97,7 @@ public class MemberDao {
 				&& !member.getName().trim().isEmpty();
 	}
 	
-	public int update(Member member) {
+	public int update(Member member) { //회원 정보 수정
 		String sql = "update smember set name=? where id=?";
 		
 		try {

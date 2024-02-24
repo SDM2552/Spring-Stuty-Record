@@ -7,9 +7,13 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-	Member member = new Member(request.getParameter("id"  ),
-							   request.getParameter("pw"  ),
-                               request.getParameter("name"));
+	
+Member member = new Member(
+		 (Integer) session.getAttribute("userNumId"), 
+		request.getParameter("id"), request.getParameter("pw"), 
+		request.getParameter("name"));
+
+	System.out.println("update:member에 저장값: "+request.getParameter("id"  )+request.getParameter("name"));
 	MemberDao.getInstance().update(member);
         
         // 사용자 이름을 담은 세션 속성도 업데이트
@@ -28,8 +32,7 @@
 
 <script>
     alert('수정이 완료되었습니다.');
-    opener.location.reload(true);  // 사용자 이름이 바뀌었으면 바로 반영, 새로고침
-    window.close();
+    window.location.href = 'index.jsp';
 </script>
 
 </body>

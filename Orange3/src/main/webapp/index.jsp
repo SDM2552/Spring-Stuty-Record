@@ -16,8 +16,7 @@ if(session.getAttribute("userId")!=null){
 	<%=session.getAttribute("userName")%> 님 환영합니다.
 	<input type="submit" value="로그아웃">
 	<input type="button" value="회원 정보 수정"
-			onclick="window.open('memberUpdateForm.jsp', 'popup', 'width=400, height=250')">
-	
+			onclick="location.href='memberUpdateForm2.jsp'">
 	</form>
 	
 <%

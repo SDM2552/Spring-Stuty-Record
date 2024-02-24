@@ -14,9 +14,11 @@
 
 <%
     request.setCharacterEncoding("utf-8");
-
+	System.out.println("MemberUpdateForm.jsp으로 이동");//디버그용
 	Member member = MemberDao.getInstance().select(
-			(String)session.getAttribute("userId"));
+			(int)session.getAttribute("userNumId"));
+	System.out.println("member 생성 완료");//디버그용
+
 %>
         <form action="memberUpdate.jsp" method="post">
             <table>

@@ -14,10 +14,10 @@
 <%
     request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
-   	Member member = MemberDao.getInstance().select(id);
+   	Member member = MemberDao.getInstance().select((int)session.getAttribute("userNumId"));
     
     
-        if (member != null) {   
+        if (request.getParameter("id") == member.getId()) {   
             // 이미 있는 아이디이면 오류 표시
 %>
             <script>
