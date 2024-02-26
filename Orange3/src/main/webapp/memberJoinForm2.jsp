@@ -42,7 +42,7 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+      <img class="mb-4" src="img/orange300.png" alt="Orange" width="200" height="200">
       <h2>회원 가입</h2>
       <p class="lead">아래의 항목들을 작성하시길 바랍니다.</p>
     </div>

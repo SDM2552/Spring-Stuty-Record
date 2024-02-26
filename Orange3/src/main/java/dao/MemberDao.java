@@ -15,7 +15,6 @@ public class MemberDao {
 	private MemberDao() {	}
 	PreparedStatement pstmt;
 	ResultSet rs;
-
 	public static MemberDao getInstance() {
 		MemberDao.getConnection();
 		return dao;
@@ -24,7 +23,8 @@ public class MemberDao {
 	public static void getConnection() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
+			conn = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

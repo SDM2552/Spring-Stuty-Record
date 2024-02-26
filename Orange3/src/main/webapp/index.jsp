@@ -23,7 +23,7 @@ if(session.getAttribute("userId")!=null){
 }
 %>
 <input type="button" value="로그인" onclick="location.href='loginForm2.jsp'">
-<input type="button" value="회원가입" onclick="location.href='memberJoinForm.jsp'">
+<input type="button" value="회원가입" onclick="location.href='memberJoinForm2.jsp'">
 <input type="button" value="게시판으로 이동" onclick="location.href='list.jsp'">
 
 

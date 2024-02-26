@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.88.1">
-  <title>Checkout example · Bootstrap v5.1</title>
+  <title>회원 정보 수정</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
 
@@ -54,7 +54,7 @@
   <div class="container">
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <img class="mb-4" src="img/orange300.png" alt="Orange" width="200" height="200">
         <h2>회원 정보 수정</h2>
       </div>
 

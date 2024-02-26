@@ -7,7 +7,7 @@
     int num = Integer.parseInt(request.getParameter("num")); 
 
 	// 게시글 데이터를 담을 변수 정의
-	String writer  = "";
+	String name  = "";
 	String title   = "";
 	String content = "";
 	String regtime = "";
@@ -21,7 +21,7 @@
 	Board board = dao.selectOne(num, true);
 	
 	// 글 데이터를 변수에 저장
-    writer  = board.getWriter();
+    name  = board.getName();
     title   = board.getTitle();
     content = board.getContent();
     regtime = board.getRegtime();
@@ -41,7 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Orange - <%=title%></title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -60,16 +60,22 @@
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1"><%=title%></h1>
+                       
+                        <h1 name="title" class="fw-bolder mb-1"><%=title%></h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on <%=regtime%> by <%=writer%>, 조회수 : <%=hits%></div>
+                        <div class="text-muted fst-italic mb-2">Posted on <%=regtime%> by </div>
+                         <div name="writer" class="text-muted fst-italic mb-2"><%=name%></div>
+                         <div class="text-muted fst-italic mb-2">조회수 : <%=hits%></div>
                     </header>
+                   
+                    
                     <!-- Post content-->
                     <section class="mb-5">
 
-                        <p class="fs-5 mb-4"><%=content%></p>
+                        <p name="content" class="fs-5 mb-4"><%=content%></p>
                     </section>
                 </article>
+                
                 <!-- Comments section-->
                 <section class="mb-5">
                     <div class="card bg-light">
@@ -77,7 +83,7 @@
                             <!-- Comment form-->
                             <form class="mb-4" style="display: flex; align-items: center;">
                                 <textarea class="form-control mr-2" rows="3" placeholder="댓글 입력 칸"></textarea>
-                                <button class="btn btn-sm btn-primary">댓글 작성</button>
+                                <button type="submit" id="commentbtn" class="btn btn-sm btn-primary btn1">댓글 작성</button>
                             </form>
                             <!-- Single comment-->
                             <!-- <div class="d-flex"> -->
@@ -102,9 +108,16 @@
                                 <!-- </div> -->
                             </div>
                             <!-- </div> -->
+                            
                         </div>
                 </section>
+                        
             </div>
+             <div class="lastbtn">
+                 		<button type="button" class="btn btn-primary btn1" onclick="location.href='list.jsp'">목록으로</button>
+                        <button type="button" class="btn btn-primary btn1" onclick="location.href='writeForm.jsp?num=<%=num%>'">글 수정</button>
+                        <button type="button" class="btn btn-primary btn1" onclick="location.href='delete.jsp?num=<%=num%>'">글 삭제</button>
+                        </div>
         </div>
     </div>
 

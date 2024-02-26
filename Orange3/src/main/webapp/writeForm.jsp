@@ -19,7 +19,7 @@
 		BoardDao dao = BoardDao.getInstance();
 		Board board = dao.selectOne(num, false);
 		
-		writer = board.getWriter();
+
 		title = board.getTitle();
 		content = board.getContent();
 		
@@ -35,9 +35,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Orange - 글쓰기</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>

@@ -11,47 +11,53 @@ import dto.Board;
 
 public class BoardDao {
 	private static Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
 	private static BoardDao dao = new BoardDao();
 	private BoardDao() {}
+	PreparedStatement pstmt;
+	ResultSet rs;
 	public static BoardDao getInstance() {
 		BoardDao.getConnection();
 		return dao;
 	}
 	
-	private static void getConnection() {
+	public static void getConnection() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(
-						"jdbc:mysql://localhost:3306/project1", "root", "mysql");
-			} catch (ClassNotFoundException | SQLException e) {
+					"jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");	
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public ArrayList<Board> selectList(){ //게시판 목록 보기
-		ArrayList<Board> list = new ArrayList<>();
-		String sql = "select * from board order by num desc";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Board board = new Board(rs.getInt("num"), rs.getString("writer"), 
-						rs.getString("title"), rs.getString("content"),
-						rs.getString("regtime"), rs.getInt("hits"));
-				list.add(board);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;		
+	    ArrayList<Board> list = new ArrayList<>();
+	    String sql = "select b.num num, b.title title, b.content content, b.regtime regtime, b.hits hits, s.name name from board b, smember s where b.memberno = s.numid order by num desc";
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+
+
+	        while(rs.next()) {
+	            Board board = new Board(
+	                    rs.getInt("num"), rs.getString("title"),
+	                    rs.getString("content"), rs.getString("regtime"),
+	                    rs.getInt("hits"), rs.getString("name"));
+	            list.add(board);
+	            System.out.println("게시판 데이터: " + board.toString());
+	        }
+	            
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        System.out.println("SQL 예외 발생");
+	    }
+	    return list;        
 	}
+
 	
-	public Board selectOne(int num, boolean inc) { //게시판 글 보기
+	public Board selectOne(int num, boolean inc) { //게시판 글 읽기
 		Board board = null;
-		String sql = "select * from board where num = ?";
+		String sql = "select b.num num, b.title title, b.content content, b.regtime regtime, b.hits hits, s.name name from board b, smember s where b.memberno = s.numid and num=?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -59,10 +65,10 @@ public class BoardDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				board = new Board(rs.getInt("num"), rs.getString("writer"), 
-						rs.getString("title"), rs.getString("content"),
-						rs.getString("regtime"), rs.getInt("hits"));
-
+				board = new Board(rs.getInt("num"), rs.getString("title"), 
+						rs.getString("content"),rs.getString("regtime"), 
+						rs.getInt("hits"), rs.getString("name"));
+				System.out.println(board.toString());
 			}
 			if (inc) {
 				pstmt.executeUpdate("update board set hits=hits+1 where num="+num);
@@ -89,7 +95,7 @@ public class BoardDao {
 	}
 	
 	public int insert(Board board) { //게시판 글쓰기
-		String sql = "insert into board(writer, title, content, regtime, hits) values (?,?,?,now(),0)";
+		String sql = "insert into board(memberno, title, content, regtime, hits) values (?,?,?,SYSDATE,0)";
 	    try ( 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);            
 	    ) {
@@ -98,7 +104,7 @@ public class BoardDao {
 //	                         LocalTime.now().toString().substring(0, 8);
 	        
 	        // 쿼리 실행
-	    	pstmt.setString(1, board.getWriter());
+	    	pstmt.setInt(1, board.getMemberno());
 	    	pstmt.setString(2, board.getTitle());
 	    	pstmt.setString(3, board.getContent());
 	        return pstmt.executeUpdate();
@@ -110,7 +116,7 @@ public class BoardDao {
 	}
 	
 	public int update(Board board) { // 게시판 글 수정
-        String sql = "update board set writer=?, title=?, content=?, regtime=now() where num=?";
+        String sql = "update board set title=?, content=? where num=?";
 	    try ( 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);            
 	    ) {
@@ -119,10 +125,9 @@ public class BoardDao {
 //	                         LocalTime.now().toString().substring(0, 8);
 	        
 	        // 쿼리 실행
-	    	pstmt.setString(1, board.getWriter());
-	    	pstmt.setString(2, board.getTitle());
-	    	pstmt.setString(3, board.getContent());
-	    	pstmt.setInt(4, board.getNum());
+	    	pstmt.setString(1, board.getTitle());
+	    	pstmt.setString(2, board.getContent());
+	    	pstmt.setInt(3, board.getNum());
 	        return pstmt.executeUpdate();
 	    
 	    } catch(Exception e) {
