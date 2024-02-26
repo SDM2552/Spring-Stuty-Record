@@ -10,9 +10,11 @@
     request.setCharacterEncoding("utf-8");
 
     // 양식에 입력되었던 값 읽기
-    String writer  = request.getParameter("writer" );
     String title   = request.getParameter("title"  );
+    String writer  = request.getParameter("writer" );
     String content = request.getParameter("content");
+    int memberno = (int)session.getAttribute("userNumId");
+    System.out.println(title+writer+content+memberno);
 
     // 빈 칸이 하나라도 있으면 오류 출력하고 종료
     if (writer  == null || writer.length()  == 0 ||
@@ -33,7 +35,7 @@
 		return;
 	}
 	BoardDao dao = BoardDao.getInstance();
-	Board board = new Board(writer, title, content);
+	Board board = new Board(title, content, memberno);
 	dao.insert(board);
     
     // 목록보기 화면으로 돌아감

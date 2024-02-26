@@ -15,12 +15,16 @@ public class Board {
 		this.memberno = memberno;
 	}
 	
+	
+	
 	public Board(int num, String title, String content) {
 		super();
 		this.num = num;
 		this.title = title;
 		this.content = content;
 	}
+	
+
 
 	public Board(int num, String title, String content, String regtime, int hits, int memberno) {
 		super();

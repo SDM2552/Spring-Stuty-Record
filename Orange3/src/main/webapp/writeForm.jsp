@@ -10,9 +10,10 @@
 
     // 새 글쓰기 모드를 가정하고 변수 초기값 설정
     String title   = "";
-    String writer  = (String)session.getAttribute("userName");;
+    String writer  = (String)session.getAttribute("userName");
     String content = "";
     String action  = "insert.jsp";
+   // int userNumId = (int)session.getAttribute("userNumId");
 
     // 글 번호가 주어졌으면, 글 수정 모드
     if (num > 0) {
