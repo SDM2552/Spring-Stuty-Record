@@ -44,7 +44,6 @@ public class BoardDao {
 	                    rs.getString("content"), rs.getString("regtime"),
 	                    rs.getInt("hits"), rs.getString("name"));
 	            list.add(board);
-	            System.out.println("게시판 데이터: " + board.toString());
 	        }
 	            
 	    } catch (SQLException e) {
@@ -68,7 +67,6 @@ public class BoardDao {
 				board = new Board(rs.getInt("num"), rs.getString("title"), 
 						rs.getString("content"),rs.getString("regtime"), 
 						rs.getInt("hits"), rs.getString("name"));
-				System.out.println(board.toString());
 			}
 			if (inc) {
 				pstmt.executeUpdate("update board set hits=hits+1 where num="+num);

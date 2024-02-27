@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="dto.Comments"%>
+<%@page import="dao.CommentsDao"%>
 <%@page import="dto.Board"%>
 <%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,6 +34,14 @@
     // 공백과 줄 바꿈 처리
     title   = title.replace  (" ", "&nbsp;");
     content = content.replace(" ", "&nbsp;").replace("\n", "<br>");
+    
+  //댓글
+    String commentWriter ="";
+    String comment = "";
+    String commentTime = "";
+    CommentsDao cdao = CommentsDao.getInstance();
+    List<Comments> list = cdao.printComments(num);
+
 %>
 
 <!DOCTYPE html>
@@ -81,8 +92,9 @@
                     <div class="card bg-light">
                         <div class="card-body">
                             <!-- Comment form-->
-                            <form class="mb-4" style="display: flex; align-items: center;">
-                                <textarea class="form-control mr-2" rows="3" placeholder="댓글 입력 칸"></textarea>
+                               <form action="commentwrite.jsp" method="post" cclass="mb-4" style="display: flex; align-items: center;">
+                            	<input type="hidden" name="boardId" value="<%=num%>">
+                                <textarea name="comment" lass="form-control mr-2" rows="3" placeholder="댓글 입력 칸"></textarea>
                                 <button type="submit" id="commentbtn" class="btn btn-sm btn-primary btn1">댓글 작성</button>
                             </form>
                             <!-- Single comment-->
@@ -92,18 +104,23 @@
                                 <!-- <div class="fw-bold">댓글 작성자</div> -->
                                 <!-- 댓글 내용 -->
                                 <table class="commentwrap">
-                                    <td>작성자1</td>
+ <%
+	for(Comments co :list) {
+%>
+                                    <td><%=co.getCommentWriter() %></td>
                                     <tr>
-                                        <td>댓글내용내용내용내용내용내용내용내용내용내용내용내용내용</td>
-                                        <td>2024/02/23 10:10:10</td>
-                                        <td><a href="#"><i class="fa-solid fa-square-xmark"></i></a></td>
+                                        <td><%=co.getComment() %></td>
+                                        <td><%=co.getCommemtTime() %></td>
+                                        <td><form action="commentdelete.jsp" method="post">
+                                        <input type="hidden" name="commentId" value="<%=co.getCommentId() %>">
+                                        <input type="hidden" name="boardId" value="<%=num%>">
+                                        <button type="submit"><i class="fa-solid fa-square-xmark"></i></button>
+                                        </form></td>
                                     </tr>
-                                    <td>작성자2</td>
-                                    <tr>
-                                        <td>댓글내용내용내용내용내용내용내용내용내용내용내용내용내용</td>
-                                        <td>2024/02/23 10:10:10</td>
-                                        <td><a href="#"><i class="fa-solid fa-square-xmark"></i></a></td>
-                                    </tr>
+<%
+	}
+%>
+                                 
                                 </table>
                                 <!-- </div> -->
                             </div>

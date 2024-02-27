@@ -10825,6 +10825,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
 .row{
   display: flex;
   justify-content: center;
@@ -10851,3 +10852,45 @@ margin: 10px;
 .ck-editor__editable {
    height: 500px; 
   }
+  
+  
+.form-control {
+  resize: none; /* 사용자가 텍스트 영역의 크기를 조정할 수 없도록 함 */
+  height: 60px; /* 텍스트 영역의 높이를 200px로 설정 */
+  width: 100%; /* 텍스트 영역의 너비를 300px로 설정 */
+  resize: none; /* 사용자가 텍스트 영역의 크기를 조정할 수 없도록 함 */
+}
+.btn {
+  width: 100px; /* 버튼의 너비를 100px로 고정 */
+  height: 60px; /* 버튼의 높이를 40px로 고정 */
+  margin-left: 10px;
+}
+table.commentwrap {
+  margin-top: 10px;
+  max-width: 1700px;
+  width: 100%;
+  float: right;
+  border-collapse: collapse;
+  justify-content: center;
+}
+table.commentwrap td {
+  padding: 8px; /* 셀 내부 여백 설정 */
+}
+tr:nth-child(odd) {
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  padding: 8px;
+}
+tr:nth-child(even) td:nth-child(2) {
+  font-size: 13px;
+  color: #bbb;
+  text-align: right;
+}
+a {
+  text-decoration: none; /* 링크의 밑줄을 제거합니다. */
+  color: inherit; /* 링크의 색상을 부모 요소로부터 상속받습니다. */
+}
+a:hover {
+  color: orange; /* 링크에 마우스를 올렸을 때 색상을 오렌지로 변경합니다. */
+}
