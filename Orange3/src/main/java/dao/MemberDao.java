@@ -51,6 +51,23 @@ public class MemberDao {
 		return member;	
 	}
 	
+	public String idCheck(String id) { // 회원가입 아이디 중복 체크
+		String sql = "select id from smember where id=?";
+		String idInDb = "";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				idInDb=rs.getString("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return idInDb;
+	}
+	
 	public Member select(int numId) { //회원 정보 수정을 위한 값 가져오기
 		Member member = null;
 		String sql = "select * from smember where numid = ?";
@@ -65,7 +82,6 @@ public class MemberDao {
 				System.out.println("select()의 member에 저장된 값: "+rs.getInt("numId")+ rs.getString("id")+ rs.getString("pw")+
 			            rs.getString("name")); //디버그용
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

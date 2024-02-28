@@ -50,7 +50,7 @@
     <div class="wrap">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">회원 정보</h4>
-        <form class="needs-validation" novalidate>
+        <form action="memberJoin.jsp" method="post" class="needs-validation" novalidate>
           <div class="row g-3">
            
 
@@ -64,7 +64,7 @@
 
             <div class="col-12">
               <label for="address" class="form-label">비밀번호</label>
-              <input type="password" name="pw" class="form-control"id="address" placeholder="비밀번호 입력" required>
+              <input type="password" name="pw" class="form-control"id="address2" placeholder="비밀번호 입력" required>
               <div class="invalid-feedback">
                 이 칸은 반드시 채워야 합니다.
               </div>
@@ -72,7 +72,7 @@
 
             <div class="col-12">
               <label for="address" class="form-label">이름</label>
-              <input type="text" name="name" class="form-control" id="address" placeholder="이름 입력" required>
+              <input type="text" name="name" class="form-control" id="address3" placeholder="이름 입력" required>
               <div class="invalid-feedback">
                 이 칸은 반드시 채워야 합니다.
               </div>
