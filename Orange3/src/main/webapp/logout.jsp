@@ -4,5 +4,5 @@
 	session.removeAttribute("userId");
 	session.removeAttribute("userName");
 
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("index2.jsp");
 %>

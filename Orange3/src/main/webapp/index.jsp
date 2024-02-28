@@ -9,8 +9,7 @@
 <body>
 <h1>메인 페이지</h1>
 <%
-if(session.getAttribute("userId")!=null){
-		
+if(session.getAttribute("userId")!=null){	
 %>
 	<form action="logout.jsp" method="post">
 	<%=session.getAttribute("userName")%> 님 환영합니다.

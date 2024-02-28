@@ -10865,13 +10865,20 @@ margin: 10px;
   height: 60px; /* 버튼의 높이를 40px로 고정 */
   margin-left: 10px;
 }
+
 table.commentwrap {
   margin-top: 10px;
   max-width: 1700px;
   width: 100%;
   float: right;
   border-collapse: collapse;
-  justify-content: center;
+  justify-content: center; 
+}
+.lastbtn {
+  text-align: center; /* 내부 요소들을 수평 가운데 정렬합니다. */
+}
+textarea.textarea {
+  width: 100%;
 }
 table.commentwrap td {
   padding: 8px; /* 셀 내부 여백 설정 */
@@ -10887,10 +10894,15 @@ tr:nth-child(even) td:nth-child(2) {
   color: #bbb;
   text-align: right;
 }
-a {
-  text-decoration: none; /* 링크의 밑줄을 제거합니다. */
-  color: inherit; /* 링크의 색상을 부모 요소로부터 상속받습니다. */
+button.xbtn {
+  background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+  border: none; /* 테두리를 없앱니다. */
+  padding: 0; /* 내부 여백을 없앱니다. */
 }
-a:hover {
-  color: orange; /* 링크에 마우스를 올렸을 때 색상을 오렌지로 변경합니다. */
+i {
+  text-decoration: none; /* 링크의 밑줄을 제거합니다. */
+  color: Orange; 
+}
+i:hover {
+  color: Red; /* 링크에 마우스를 올렸을 때 색상을 오렌지로 변경합니다. */
 }

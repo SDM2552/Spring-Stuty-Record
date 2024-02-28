@@ -23,7 +23,7 @@
 	session.setAttribute("userNumId", member.getNumId());
 	session.setAttribute("userId", member.getId());
 	session.setAttribute("userName", member.getName());
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("index2.jsp");
 	System.out.println("세션에 저장된 값: " +member.getNumId()+" + "+member.getId()+" + "+member.getName() );
 	return;
 	}

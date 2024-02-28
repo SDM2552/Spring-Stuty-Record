@@ -32,7 +32,7 @@ Member member = new Member(
 
 <script>
     alert('수정이 완료되었습니다.');
-    window.location.href = 'index.jsp';
+    window.location.href = 'index2.jsp';
 </script>
 
 </body>

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기업형 웹 페이지</title>
+    <title>Orange site</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/cb08c62fff.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -18,42 +18,67 @@
 
     <header>
         <div class="inner">
-            <h1><a href="#">DCODLAB</a></h1>
+            <h1><a href="index2.jsp">Orange</a></h1>
 
             <ul id="gnb">
-                <li><a href="#">DEPARTMENT</a></li>
-                <li><a href="#">GALLERY</a></li>
-                <li><a href="#">YOUTUBE</a></li>
-                <li><a href="#">COMMUNITY</a></li>
-                <li><a href="#">LOCATION</a></li>
+                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.jsp">Orange</a></li>
             </ul>
 
             <ul class="util">
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
-                <li><a href="#">메인 페이지</a></li>
+<%
+if(session.getAttribute("userId")!=null){	
+%>
+	<li><form action="logout.jsp" method="post">
+	<%=session.getAttribute("userName")%> 님 환영합니다.
+	<input class="info" type="submit" value="로그아웃">
+	<input class="info" type="button" value="회원 정보 수정"
+			onclick="location.href='memberUpdateForm2.jsp'">
+	</form></li>
+	
+<%
+} else {
+%>
+				<li><input class="info" type="button" value="로그인"
+			onclick="location.href='loginForm2.jsp'"></li>
+			<li><input class="info" type="button" value="회원 가입"
+			onclick="location.href='memberJoinForm2.jsp'"></li>
+<%
+}
+%>
+				<li><input class="info" type="button" value="메인 페이지"
+			onclick="location.href='index2.jsp'"></li>
             </ul>
         </div>
     </header>
 
 
     <figure>
-        <video src="img/visual.mp4" autoplay muted loop></video>
+        <video src="img/orange3.mp4" autoplay muted loop></video>
         <div class="inner">
-            <h1>INNOVATION</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
-                Id praesentium molestias similique quaerat magni facere in a? Adipisci, possimus reprehenderit!</p>
+            <h1>Orange</h1>
+            <p>Orange is Orange and Orange of Orange with Orange also Orange where Orange that Orange kind of<br>
+                Orange by Orange in Orange on the Orange out Orange is Orange and Orange of Orange with Orange <br>
+                also Orange where Orange that Orange kind of Orange by Orange in Orange on the Orange out Orange is<br>
+                Orange and Orange of Orange with Orange also Orange where Orange that Orange kind of Orange by Orange in
+                Orange <br>
+                on the Orange out Orange? Orange!
+                <br>
+            </p>
             <a href="#">view detail</a>
         </div>
     </figure>
 
     <section>
         <div class="inner">
-            <h1>RECENT NEWS</h1>
+            <h1>RECENT ORANGE NEWS</h1>
             <div class="wrap">
                 <article>
                     <div class="pic">
-                        <img src="img/news1.jpg" alt="1번째 콘텐츠 이미지">
+                        <img src="img/bigorange2.jpeg" alt="1번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">Lorem ipsum dolor sit.</a></h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae minus, eaque corrupti vero ad
@@ -62,7 +87,7 @@
 
                 <article>
                     <div class="pic">
-                        <img src="img/news2.jpg" alt="2번째 콘텐츠 이미지">
+                        <img src="img/fallorange2.jpeg" alt="2번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">Lorem ipsum dolor sit.</a></h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae minus, eaque corrupti vero ad
@@ -71,7 +96,7 @@
 
                 <article>
                     <div class="pic">
-                        <img src="img/news3.jpg" alt="3번째 콘텐츠 이미지">
+                        <img src="img/orangecubic.jpeg" alt="3번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">Lorem ipsum dolor sit.</a></h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae minus, eaque corrupti vero ad
@@ -80,7 +105,7 @@
 
                 <article>
                     <div class="pic">
-                        <img src="img/news4.jpg" alt="4번째 콘텐츠 이미지">
+                        <img src="img/orangeburger.jpeg" alt="4번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">Lorem ipsum dolor sit.</a></h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae minus, eaque corrupti vero ad
@@ -93,7 +118,7 @@
     <footer>
         <div class="inner">
             <div class="upper">
-                <h1>DCODELAB</h1>
+                <h1>Orange Company</h1>
                 <ul>
                     <li><a href="#">Policy</a></li>
                     <li><a href="#">Terms</a></li>
@@ -104,11 +129,11 @@
 
             <div class="lower">
                 <address>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, facere.<br>
-                    TEL : 031-111-1234 C.P : 010-1234-5678
+                    Orange is awesome fruits where you seen in the world!<br>
+                    TEL : 031-123-1234 C.P : 010-1234-5678
                 </address>
                 <p>
-                    2020 DOCDELAB &copy; copyright all right reserved.
+                    2024 Orange Company &copy; copyright all right reserved.
                 </p>
             </div>
         </div>

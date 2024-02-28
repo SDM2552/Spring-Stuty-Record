@@ -37,7 +37,7 @@
                 alert('가입이 완료되었습니다.');
             </script>
 <%        
-response.sendRedirect("index.jsp");
+response.sendRedirect("index2.jsp");
         }
 %>
 
