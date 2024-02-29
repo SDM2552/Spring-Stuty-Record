@@ -80,7 +80,7 @@ if(session.getAttribute("userId")!=null){
             <td><%=bo.getNum()%></td>
             <td style="text-align:left;">
                 <a href="post.jsp?num=<%=bo.getNum()%>">
-                    <%=bo.getTitle()%>
+                    <%=bo.getTitle()%> (<%=bo.getcCount() %>)
                 </a>
             </td>
             <td><%=bo.getName()%></td>

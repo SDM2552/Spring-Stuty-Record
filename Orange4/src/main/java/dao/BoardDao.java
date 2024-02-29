@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dto.Board;
+import dto.Comments;
 
 public class BoardDao {
 	private static Connection conn;
@@ -32,7 +33,22 @@ public class BoardDao {
 	
 	public ArrayList<Board> selectList(){ //게시판 목록 보기
 	    ArrayList<Board> list = new ArrayList<>();
-	    String sql = "select b.num num, b.title title, b.content content, b.regtime regtime, b.hits hits, s.name name from board b, smember s where b.memberno = s.numid order by num desc";
+//	    String sql = "select b.num num, b.title title, b.content content, b.regtime regtime, b.hits hits, s.name name from board b, smember s where b.memberno = s.numid order by num desc";
+	    String sql = "SELECT "
+	    		+ "    b.num AS num,"
+	    		+ "    b.title AS title,"
+	    		+ "    b.content AS content,"
+	    		+ "    b.regtime AS regtime,"
+	    		+ "    b.hits AS hits,"
+	    		+ "    s.name AS name,"
+	    		+ "    COUNT(c.boardid) AS count "
+	    		+ "FROM board b "
+	    		+ "JOIN smember s ON b.memberno = s.numid "
+	    		+ "LEFT JOIN comments c ON b.num = c.boardid "
+	    		+ "GROUP BY b.num, b.title, b.content, b.regtime, b.hits, s.name "
+	    		+ "ORDER BY b.num DESC";
+
+	    
 	    try {
 	        pstmt = conn.prepareStatement(sql);
 	        rs = pstmt.executeQuery();
@@ -42,17 +58,15 @@ public class BoardDao {
 	            Board board = new Board(
 	                    rs.getInt("num"), rs.getString("title"),
 	                    rs.getString("content"), rs.getString("regtime"),
-	                    rs.getInt("hits"), rs.getString("name"));
+	                    rs.getInt("hits"), rs.getString("name"), rs.getInt("count"));
 	            list.add(board);
-	        }
-	            
+	        }           
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        System.out.println("SQL 예외 발생");
 	    }
 	    return list;        
 	}
-
 	
 	public Board selectOne(int num, boolean inc) { //게시판 글 읽기
 		Board board = null;

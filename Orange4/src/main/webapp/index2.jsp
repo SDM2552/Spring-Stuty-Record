@@ -81,7 +81,7 @@ if(session.getAttribute("userId")!=null){
                         <img src="img/bigorange2.jpeg" alt="1번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">맛있는 오렌지가 열렸어요!</a></h2>
-                    <p>농부 김정길(62) 씨가 수박만한 오렌지를 들고 함박 웃음을 짓고 있다. 김정길 씨는 이 오렌지를 마을 사람들과 나누어 먹었다고 한다.</p>
+                    <p>농부 김정길(62) 씨가 수박만한 오렌지를 들고 함박 웃음을 짓고 있다. 김정길 씨는 이 오렌지를 마을 사람들과 나누어 먹었다고 한다...(더보기)</p>
                 </article>
 
                 <article>
@@ -89,7 +89,7 @@ if(session.getAttribute("userId")!=null){
                         <img src="img/fallorange2.jpeg" alt="2번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">지구 최후의 날</a></h2>
-                    <p>오늘 밤 20시 거대한 오렌지가 지구에 추락한다. 과학자들은 지구가 멸망할 거라고 말했다. 세상의 모든 생명들 안녕!</p>
+                    <p>오늘 밤 20시 거대한 오렌지가 지구에 추락한다. 과학자들은 지구가 멸망할 거라고 말했다. 세상의 모든 생명들 안녕!...(더보기)</p>
                 </article>
 
                 <article>
@@ -97,7 +97,7 @@ if(session.getAttribute("userId")!=null){
                         <img src="img/orangecubic.jpeg" alt="3번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">반짝반짝 오렌지</a></h2>
-                    <p>오렌지는 보석보다 반짝거리며 향기롭고 맛있다. 이런 오렌지가 세상에서 가장 귀중하다는건 당연한 사실 아닐까?</p>
+                    <p>오렌지는 보석보다 반짝거리며 향기롭고 맛있다. 이런 오렌지가 세상에서 가장 귀중하다는건 당연한 사실 아닐까?...(더보기)</p>
                 </article>
 
                 <article>
@@ -105,7 +105,7 @@ if(session.getAttribute("userId")!=null){
                         <img src="img/orangeburger.jpeg" alt="4번째 콘텐츠 이미지">
                     </div>
                     <h2><a href="#">오렌지 버거</a></h2>
-                    <p>맥도리아는 이번달 28일 오렌지를 넣어 만든 신제품 '오렌지 버거'를 발표했다. 오렌지 버거는 선풍적인 인기를 끌며 품절대란이 났다고 한다.</p>
+                    <p>맥도리아는 이번달 28일 오렌지를 넣어 만든 신제품 '오렌지 버거'를 발표했다. 오렌지 버거는 선풍적인 인기를 끌며 품절대란이 났다고 한다...(더보기)</p>
                 </article>
             </div>
         </div>
@@ -125,7 +125,7 @@ if(session.getAttribute("userId")!=null){
 
             <div class="lower">
                 <address>
-                    Orange is awesome fruits where you seen in the world!<br>
+                    "Oranges are the most awesome fruits you can find in the world!"<br>
                     TEL : 031-123-1234 C.P : 010-1234-5678
                 </address>
                 <p>

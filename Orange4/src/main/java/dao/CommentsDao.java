@@ -50,7 +50,7 @@ public class CommentsDao {
 		return list;		
 	}
 	
-	public ArrayList<Comments> CountComments(){
+	public ArrayList<Comments> CountComments(){ //게시판 댓글 수
 		ArrayList<Comments> list = new ArrayList<>();
 		String sql = "select boardid, count(*) count from comments GROUP BY boardid order by boardid desc";
 		try {

@@ -128,4 +128,8 @@ public class MemberDao {
 		return 0;
 	}
 	
+	public int delete() { //회원 탈퇴 만들기
+		return 0;
+	}
+	
 }
