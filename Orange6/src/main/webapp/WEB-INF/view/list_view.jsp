@@ -65,7 +65,7 @@ if(session.getAttribute("userId")!=null){
         <tr>
             <td>${board.num}</td>
             <td style="text-align:left;">
-                <a href="post.jsp?num=${board.num}">
+                <a href="post.do?num=${board.num}">
                     ${board.title} (${board.cCount})
                 </a>
             </td>

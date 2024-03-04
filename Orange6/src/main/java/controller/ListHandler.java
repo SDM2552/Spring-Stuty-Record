@@ -12,7 +12,7 @@ import dto.Board;
 import mvc.command.CommandHandler;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
-public class ListHandlr implements CommandHandler {
+public class ListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {

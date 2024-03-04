@@ -71,10 +71,10 @@ public class Comments {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getCommemtTime() {
+	public String getCommentTime() {
 		return commentTime;
 	}
-	public void setCommemtTime(String commentTime) {
+	public void setCommentTime(String commentTime) {
 		this.commentTime = commentTime;
 	}
 	@Override

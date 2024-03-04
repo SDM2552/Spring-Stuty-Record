@@ -43,6 +43,7 @@
 		<url-pattern>/list.jsp</url-pattern>
 		<url-pattern>/list.do</url-pattern>
 		<url-pattern>/post.jsp</url-pattern>
+		<url-pattern>/post.do</url-pattern>
 	</filter-mapping>
 
 </web-app>

@@ -1,53 +1,7 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="mvjsp.jdbc.connection.ConnectionProvider"%>
-<%@page import="java.util.List"%>
-<%@page import="dto.Comments"%>
-<%@page import="dao.CommentsDao"%>
-<%@page import="dto.Board"%>
-<%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    // 지정된 글 번호 얻기
-    int num = Integer.parseInt(request.getParameter("num")); 
-
-	// 게시글 데이터를 담을 변수 정의
-	String name  = "";
-	String title   = "";
-	String content = "";
-	String regtime = "";
-	int    hits    = 0;
-	
-	String memberId = (String)session.getAttribute("userId");
-	if (memberId == null) {
-		response.sendRedirect("list.jsp");
-	}
-	Connection conn = ConnectionProvider.getConnection();
-	BoardDao dao = BoardDao.getInstance();
-	Board board = dao.selectOne(conn, num, true);
-	
-	// 글 데이터를 변수에 저장
-    name  = board.getName();
-    title   = board.getTitle();
-    content = board.getContent();
-    regtime = board.getRegtime();
-    hits    = board.getHits();
-	
-	// 글 제목과 내용이 웹 페이지에 올바르게 출력되도록 
-    // 공백과 줄 바꿈 처리
-    title   = title.replace  (" ", "&nbsp;");
-    content = content.replace(" ", "&nbsp;").replace("\n", "<br>");
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-  //댓글
-    String commentWriter ="";
-    String comment = "";
-    String commentTime = "";
-    conn = ConnectionProvider.getConnection();
-    CommentsDao cdao = CommentsDao.getInstance();
-    List<Comments> list = cdao.printComments(conn, num);
-
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Orange - <%=title%></title>
+    <title>Orange - ${board.title}</title>
     <!-- Favicon-->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -115,18 +69,18 @@ if(session.getAttribute("userId")!=null){
                     <header class="mb-4">
                         <!-- Post title-->
                        
-                        <h1 name="title" class="fw-bolder mb-1"><%=title%></h1>
+                        <h1 name="title" class="fw-bolder mb-1">${board.title}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on <%=regtime%> by </div>
-                         <div name="writer" class="text-muted fst-italic mb-2"><%=name%></div>
-                         <div class="text-muted fst-italic mb-2">조회수 : <%=hits%></div>
+                        <div class="text-muted fst-italic mb-2">Posted on ${board.regtime} by </div>
+                         <div name="writer" class="text-muted fst-italic mb-2">${board.name}</div>
+                         <div class="text-muted fst-italic mb-2">조회수 : ${board.hits}</div>
                     </header>
                    
                     
                     <!-- Post content-->
                     <section class="mb-5">
 
-                        <p name="content" class="fs-5 mb-4"><%=content%></p>
+                        <p name="content" class="fs-5 mb-4">${board.content}</p>
                     </section>
                 </article>
                 
@@ -136,7 +90,7 @@ if(session.getAttribute("userId")!=null){
                         <div class="card-body">
                             <!-- Comment form-->
                                <form action="commentwrite.jsp" method="post" class="mb-4 formwrap" style="display: flex; align-items: center;">
-                            	<input type="hidden" name="boardId" value="<%=num%>">
+                            	<input type="hidden" name="boardId" value="${board.num}">
                                 <textarea class="textarea" name="comment" class="form-control mr-2" rows="3" placeholder="댓글 입력 칸"></textarea>
                                 <button type="submit" id="commentbtn" class="btn btn-sm btn-primary btn1">댓글 작성</button>
                             </form>
@@ -148,22 +102,19 @@ if(session.getAttribute("userId")!=null){
                                 <!-- 댓글 내용 -->
                                  <div class="commentwrap1">
                                 <table class="commentwrap">
- <%
-	for(Comments co :list) {
-%>
-                                    <td><%=co.getCommentWriter() %></td>
+
+<c:forEach var="co" items="${clist}">
+                                    <td>${co.commentWriter}</td>
                                     <tr>
-                                        <td><%=co.getComment() %></td>
-                                        <td><%=co.getCommemtTime() %></td>
+                                        <td>${co.comment}</td>
+                                        <td>${co.commentTime}</td>
                                         <td><form action="commentdelete.jsp" method="post">
-                                        <input type="hidden" name="commentId" value="<%=co.getCommentId() %>">
-                                        <input type="hidden" name="boardId" value="<%=num%>">
+                                        <input type="hidden" name="commentId" value="${co.commentId}">
+                                        <input type="hidden" name="boardId" value="${board.num}">
                                         <button class="xbtn" type="submit"><i class="fa-solid fa-square-xmark"></i></button>
                                         </form></td>
                                     </tr>
-<%
-	}
-%>
+</c:forEach>
                                 </table>
                                 </div>
                                 <!-- </div> -->
@@ -175,9 +126,9 @@ if(session.getAttribute("userId")!=null){
                         
             </div>
              <div class="lastbtn">
-                 		<button type="button" class="btn btn-primary btn1" onclick="location.href='list.jsp'">목록으로</button>
-                        <button type="button" class="btn btn-primary btn1" onclick="location.href='writeForm.jsp?num=<%=num%>'">글 수정</button>
-                        <button type="button" class="btn btn-primary btn1" onclick="location.href='delete.jsp?num=<%=num%>'">글 삭제</button>
+                 		<button type="button" class="btn btn-primary btn1" onclick="location.href='list.do'">목록으로</button>
+                        <button type="button" class="btn btn-primary btn1" onclick="location.href='writeForm.jsp?num=${board.num}'">글 수정</button>
+                        <button type="button" class="btn btn-primary btn1" onclick="location.href='delete.jsp?num=${board.num}'">글 삭제</button>
                         </div>
         </div>
     </div>
