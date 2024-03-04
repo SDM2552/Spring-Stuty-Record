@@ -17,4 +17,4 @@
 	List<Board> list = dao.selectList(conn);
 	request.setAttribute("list", list);
 %>
-<jsp:forward page="list_view.jsp" />
+<jsp:forward page="/WEB-INF/view/list_view.jsp" />

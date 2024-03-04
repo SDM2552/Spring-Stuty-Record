@@ -20,11 +20,11 @@
             <h1><a href="index2.jsp">Orange</a></h1>
 
             <ul id="gnb">
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
             </ul>
 
             <ul class="util">
