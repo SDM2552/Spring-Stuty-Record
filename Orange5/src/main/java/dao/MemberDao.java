@@ -30,26 +30,46 @@ public class MemberDao {
 //		}
 //	}
 	
+//	public Member selectForLogin(Connection conn, String id, String pw) { //로그인용
+//		Member member=null;
+//		String sql = "select * from smember where id=?";
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, id);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				if(BCrypt.checkpw(pw, rs.getString("pw"))) {
+//				member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"), rs.getString("name"));
+//				}
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return member;	
+//	}
 	public Member selectForLogin(Connection conn, String id, String pw) { //로그인용
-		Member member=null;
-		String sql = "select * from smember where id=?";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(BCrypt.checkpw(pw, rs.getString("pw"))) {
-				member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"), rs.getString("name"));
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return member;	
+	    Member member = null;
+	    String sql = "SELECT * FROM smember WHERE id=?";
+	    
+	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	        pstmt.setString(1, id);
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            if (rs.next()) {
+	                if (BCrypt.checkpw(pw, rs.getString("pw"))) {
+	                    member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"), rs.getString("name"));
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return member;
 	}
+
 	
 	public String idCheck(Connection conn, String id) { // 회원가입 아이디 중복 체크
 		String sql = "select id from smember where id=?";

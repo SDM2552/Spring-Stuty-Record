@@ -42,6 +42,7 @@
     String commentWriter ="";
     String comment = "";
     String commentTime = "";
+    conn = ConnectionProvider.getConnection();
     CommentsDao cdao = CommentsDao.getInstance();
     List<Comments> list = cdao.printComments(conn, num);
 

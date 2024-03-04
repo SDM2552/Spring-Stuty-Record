@@ -15,6 +15,7 @@
      String writer  = request.getParameter("writer" );
      String title   = request.getParameter("title"  );
      String content = request.getParameter("content");
+     System.out.println(num+writer+title+content);
  
      // 빈 칸이 하나라도 있으면 오류 출력하고 종료
      if (writer  == null || writer.length()  == 0 ||
