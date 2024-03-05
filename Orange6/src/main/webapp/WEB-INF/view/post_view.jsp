@@ -127,7 +127,7 @@ if(session.getAttribute("userId")!=null){
             </div>
              <div class="lastbtn">
                  		<button type="button" class="btn btn-primary btn1" onclick="location.href='list.do'">목록으로</button>
-                        <button type="button" class="btn btn-primary btn1" onclick="location.href='writeForm.jsp?num=${board.num}'">글 수정</button>
+                        <button type="button" class="btn btn-primary btn1" onclick="location.href='writeForm.do?num=${board.num}'">글 수정</button>
                         <button type="button" class="btn btn-primary btn1" onclick="location.href='delete.jsp?num=${board.num}'">글 삭제</button>
                         </div>
         </div>

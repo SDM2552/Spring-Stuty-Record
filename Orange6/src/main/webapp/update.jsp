@@ -8,7 +8,7 @@
  <%@ page import="java.time.*" %>
   
  <%
-     request.setCharacterEncoding("utf-8");
+ //    request.setCharacterEncoding("utf-8");
  
      // 전달받은 값 읽기
      int    num     = Integer.parseInt(request.getParameter("num"));
@@ -35,6 +35,6 @@
  	dao.update(conn, board);
      
      // 글 보기 화면으로 돌아감
-     response.sendRedirect("post.jsp?num=" + num);
+     response.sendRedirect("post.do?num=" + num);
  %>     
  

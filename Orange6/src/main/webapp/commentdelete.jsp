@@ -10,7 +10,7 @@ int boardId = Integer.parseInt(request.getParameter("boardId"));
 Connection conn = ConnectionProvider.getConnection();
 CommentsDao dao = CommentsDao.getInstance();
 dao.delete(conn, commentId);
-response.sendRedirect("post.jsp?num="+boardId);
+response.sendRedirect("post.do?num="+boardId);
 %>
 
 <!DOCTYPE html>

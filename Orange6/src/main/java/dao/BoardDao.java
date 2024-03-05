@@ -81,7 +81,7 @@ public class BoardDao {
 //		}
 //	    return list;        
 //	}
-	public ArrayList<Board> selectList(Connection conn) {
+	public ArrayList<Board> selectList(Connection conn) {//게시판 목록 보기
 	    ArrayList<Board> list = new ArrayList<>();
 	    String sql = "SELECT "
 	            + "    b.num AS num,"
@@ -134,21 +134,22 @@ public class BoardDao {
 				board = new Board(rs.getInt("num"), rs.getString("title"), 
 						rs.getString("content"),rs.getString("regtime"), 
 						rs.getInt("hits"), rs.getString("name"));
-				board.toString();
+				System.out.println("selectOne이 일하고 있냐? "+board);
 			}
 			if (inc) {
 				pstmt.executeUpdate("update board set hits=hits+1 where num="+num);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-		    if (conn != null) {
-		        try {
-		            conn.close();
-		        } catch (SQLException e) {
-		        }
-		    }
+//		} finally {
+//		    if (conn != null) {
+//		        try {
+//		            conn.close();
+//		        } catch (SQLException e) {
+//		        }
+//		    }
 		}
+		System.out.println("selectOne 리턴까지 넘기냐? "+board);
 		return board;		
 	}
 	

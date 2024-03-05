@@ -36,6 +36,7 @@ public class PostHandler implements CommandHandler{
 		Connection conn = ConnectionProvider.getConnection();
 		BoardDao dao = BoardDao.getInstance();
 		Board board = dao.selectOne(conn, num, true);
+		conn.close();
 		
 		// 글 데이터를 변수에 저장
 	    name  = board.getName();

@@ -1,45 +1,7 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="mvjsp.jdbc.connection.ConnectionProvider"%>
-<%@page import="java.util.List"%>
-<%@page import="dto.Board"%>
-<%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-String memberId = (String)session.getAttribute("userId"); 
-if(memberId==null){ //로그인 해야만 페이지 접근 가능
-	response.sendRedirect("loginForm2.jsp");
-}
-Connection conn = ConnectionProvider.getConnection();
-BoardDao dao = BoardDao.getInstance();
-List<Board> list = dao.selectList(conn);
-
-    // 글 번호 값 얻기, 주어지지 않았으면 0으로 설정
-    String tmp = request.getParameter("num");
-    int num = (tmp != null && tmp.length() > 0) ? Integer.parseInt(tmp)
-                                                : 0;
-
-    // 새 글쓰기 모드를 가정하고 변수 초기값 설정
-    String title   = "";
-    String writer  = (String)session.getAttribute("userName");
-    String content = "";
-    String action  = "insert.jsp";
-   // int userNumId = (int)session.getAttribute("userNumId");
-
-    // 글 번호가 주어졌으면, 글 수정 모드
-    if (num > 0) {
-
-		Board board = dao.selectOne(conn, num, false);
-		
-
-		title = board.getTitle();
-		content = board.getContent();
-		
-		action = "update.jsp?num="+num;
-        
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,11 +36,11 @@ List<Board> list = dao.selectList(conn);
             <h1><a class="header1" href="index2.jsp">Orange</a></h1>
 
             <ul id="gnb">
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
-                <li><a href="list.jsp">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
+                <li><a href="list.do">Orange</a></li>
             </ul>
 
             <ul class="util">
@@ -114,20 +76,21 @@ if(session.getAttribute("userId")!=null){
                 <!-- Post content-->
                 <article class="writewrap">
                     <h1> 글 작성</h1>
-                    <form action="<%=action%>" method="POST">
+                    <form action="${action}" method="POST">
+ 
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
                             
                             <div class="col-12">
 
-                                <input type="text" name="title" value="<%=title%>" class="form-control" id="address" placeholder="제목" required>
+                                <input type="text" name="title" value="${board.title}" class="form-control" id="address" placeholder="제목" required>
                                 <div class="invalid-feedback">
                                     제목을 입력해 주세요.
                                 </div>
                             </div>
                             <div class="col-12"> <!-- 작성자 -->
-                                <input type="text" readonly name="writer" value="<%=writer%>" class="form-control" id="address" placeholder="<%=session.getAttribute("userName")%>"
+                                <input type="text" readonly name="writer" value="${board.name}" class="form-control" id="address" placeholder="<%=session.getAttribute("userName")%>"
                                     required>
 
                             </div>
@@ -137,7 +100,7 @@ if(session.getAttribute("userId")!=null){
                         <!-- Post content-->
                         <section class="mb-5">
 
-                            <textarea name="content" id="editor"><%=content%></textarea>
+                            <textarea name="content" id="editor">${board.content}</textarea>
                         </section>
                         <div class="forbutton">
                             <button type="submit" class="btn btn-warning">저장</button>

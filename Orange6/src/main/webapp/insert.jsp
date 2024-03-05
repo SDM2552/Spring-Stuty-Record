@@ -12,10 +12,10 @@
 
     // 양식에 입력되었던 값 읽기
     String title   = request.getParameter("title"  );
-    String writer  = request.getParameter("writer" );
+    String writer  = (String)session.getAttribute("userName");
     String content = request.getParameter("content");
     int memberno = (int)session.getAttribute("userNumId");
-    System.out.println(title+writer+content+memberno);
+    System.out.println("글내용: "+title+","+writer+","+content+","+memberno);
 
     // 빈 칸이 하나라도 있으면 오류 출력하고 종료
     if (writer  == null || writer.length()  == 0 ||
@@ -31,17 +31,18 @@
     }
 
 	String memberId = (String)session.getAttribute("userId"); 
-	if(memberId==null){ //로그인 해야만 페이지 접근 가능
-		response.sendRedirect("loginForm.jsp");
-		return;
-	}
+//	if(memberId==null){ //로그인 해야만 페이지 접근 가능
+//		response.sendRedirect("loginForm.jsp");
+//		return;
+//	}
 	Connection conn = ConnectionProvider.getConnection();
 	BoardDao dao = BoardDao.getInstance();
-	Board board = new Board(title, content, memberno);
+	Board board = new Board(memberno, title, content);
+	System.out.println("글쓰기 board 체크 "+board);
 	dao.insert(conn, board);
     
     // 목록보기 화면으로 돌아감
     //if (!response.isCommitted()) { // 응답이 아직 커밋되지 않았을 경우에만 리다이렉션 수행
-        response.sendRedirect("list.jsp");
+        response.sendRedirect("list.do");
     //}
 %>     

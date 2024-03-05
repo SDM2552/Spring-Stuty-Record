@@ -19,7 +19,7 @@
  %>
  <script>
 	alert('글이 삭제됐습니다.');
-	location.href="list.jsp";
+	location.href="list.do";
 </script>
   <%
     

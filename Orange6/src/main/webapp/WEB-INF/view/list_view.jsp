@@ -78,7 +78,7 @@ if(session.getAttribute("userId")!=null){
 </div>
 
 <div class="container" style="padding-top: 50px;">
-<input type="submit" value="글쓰기" class="btn btn-outline-warning" onclick="location.href='writeForm.jsp'">
+<input type="submit" value="글쓰기" class="btn btn-outline-warning" onclick="location.href='writeForm.do'">
 </div>
 
     <footer>
