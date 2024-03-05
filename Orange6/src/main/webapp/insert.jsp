@@ -37,7 +37,7 @@
 //	}
 	Connection conn = ConnectionProvider.getConnection();
 	BoardDao dao = BoardDao.getInstance();
-	Board board = new Board(memberno, title, content);
+	Board board = new Board(title, content, memberno );
 	System.out.println("글쓰기 board 체크 "+board);
 	dao.insert(conn, board);
     
