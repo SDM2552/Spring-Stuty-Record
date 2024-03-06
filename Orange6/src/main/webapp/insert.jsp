@@ -8,7 +8,7 @@
 <%@ page import="java.time.*" %>
  
 <%
-    request.setCharacterEncoding("utf-8");
+//    request.setCharacterEncoding("utf-8");
 
     // 양식에 입력되었던 값 읽기
     String title   = request.getParameter("title"  );

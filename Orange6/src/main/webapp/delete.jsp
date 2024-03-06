@@ -21,8 +21,3 @@
 	alert('글이 삭제됐습니다.');
 	location.href="list.do";
 </script>
-  <%
-    
-//     목록보기 화면으로 돌아감
-//    response.sendRedirect("list.jsp");
-%>

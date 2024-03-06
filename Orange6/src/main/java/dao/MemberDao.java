@@ -83,6 +83,13 @@ public class MemberDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
 		}
 		
 		return idInDb;
@@ -104,6 +111,13 @@ public class MemberDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
 		}
 		return member;		
 	}
@@ -123,7 +137,14 @@ public class MemberDao {
 	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
+	    } finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
+		}
 		return 0;
 	}
 	
@@ -143,8 +164,14 @@ public class MemberDao {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
 		}
-		
 		return 0;
 	}
 	

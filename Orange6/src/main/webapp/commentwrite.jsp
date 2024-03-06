@@ -16,7 +16,7 @@
 	CommentsDao dao = CommentsDao.getInstance();
 	Comments comments = new Comments(boardId, commentWriter, comment);
 	dao.insert(conn, comments);
-	response.sendRedirect("post.jsp?num="+boardId);
+	response.sendRedirect("post.do?num="+boardId);
 %>
 <!DOCTYPE html>
 <html>

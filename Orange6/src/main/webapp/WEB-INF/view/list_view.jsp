@@ -32,7 +32,7 @@ if(session.getAttribute("userId")!=null){
 	<%=session.getAttribute("userName")%> 님 환영합니다.
 	<input class="info" type="submit" value="로그아웃">
 	<input class="info" type="button" value="회원 정보 수정"
-			onclick="location.href='memberUpdateForm2.jsp'">
+			onclick="location.href='memberUpdateForm2.do'">
 	</form></li>
 	
 <%

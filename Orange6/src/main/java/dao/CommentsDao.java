@@ -139,7 +139,14 @@ public class CommentsDao {
 	        return pstmt.executeUpdate();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	    }
+	    } finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
+		}
 	    return 0;
 	}
 
@@ -153,6 +160,13 @@ public class CommentsDao {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException e) {
+		        }
+		    }
 		}
 		return 0;
 	}

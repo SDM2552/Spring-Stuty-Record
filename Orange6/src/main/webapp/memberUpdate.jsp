@@ -6,7 +6,7 @@
 <%@ page import="java.sql.*" %>
 
 <%
-    request.setCharacterEncoding("utf-8");
+//    request.setCharacterEncoding("utf-8");
 	Connection conn = ConnectionProvider.getConnection();
 
 	

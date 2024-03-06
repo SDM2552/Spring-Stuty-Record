@@ -1,9 +1,9 @@
+<%@page import="java.sql.Connection"%>
 <%@page import="mvjsp.jdbc.connection.ConnectionProvider"%>
-<%@page import="dao.MemberDao"%>
 <%@page import="dto.Member"%>
+<%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,9 +13,9 @@
 <body>
 
 <%
-    request.setCharacterEncoding("utf-8");
-	Connection conn = ConnectionProvider.getConnection();
+//    request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
+	Connection conn = ConnectionProvider.getConnection();
    	MemberDao dao = MemberDao.getInstance();
    			//MemberDao.getInstance().idCheck(request.getParameter("id"));
     
@@ -32,7 +32,9 @@
             Member member1 = new Member(request.getParameter("id"  ),
                     request.getParameter("pw"  ),
                     request.getParameter("name"));
+            conn = ConnectionProvider.getConnection();
             MemberDao.getInstance().insert(conn, member1);
+            System.out.println("가입정보: "+member1.toString());
             System.out.println("가입 성공");
         	
 %>

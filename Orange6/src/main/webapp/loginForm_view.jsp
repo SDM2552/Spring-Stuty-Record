@@ -159,7 +159,7 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form action="login.do" method="post">
+  <form action="login.jsp" method="post">
     <img class="mb-4" src="img/orange300.png" alt="Orange" width="200" height="200">
     <h1 class="h3 mb-3 fw-normal">로그인</h1>
 <%

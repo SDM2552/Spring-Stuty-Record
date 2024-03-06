@@ -35,7 +35,7 @@ if(session.getAttribute("userId")!=null){
 	<%=session.getAttribute("userName")%> 님 환영합니다.
 	<input class="info" type="submit" value="로그아웃">
 	<input class="info" type="button" value="회원 정보 수정"
-			onclick="location.href='memberUpdateForm2.jsp'">
+			onclick="location.href='memberUpdateForm2.do'">
 	</form></li>
 	
 <%
@@ -44,7 +44,7 @@ if(session.getAttribute("userId")!=null){
 				<li><input class="info" type="button" value="로그인"
 			onclick="location.href='loginForm2.jsp'"></li>
 			<li><input class="info" type="button" value="회원 가입"
-			onclick="location.href='memberJoinForm2.jsp'"></li>
+			onclick="location.href='memberJoinForm2.do'"></li>
 <%
 }
 %>

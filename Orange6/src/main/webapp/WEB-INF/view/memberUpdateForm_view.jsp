@@ -1,18 +1,6 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="mvjsp.jdbc.connection.ConnectionProvider"%>
-<%@page import="dto.Member"%>
-<%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    request.setCharacterEncoding("utf-8");
-	Connection conn = ConnectionProvider.getConnection();
-	System.out.println("MemberUpdateForm.jsp으로 이동");//디버그용
-	Member member = MemberDao.getInstance().select(conn, 
-			(int)session.getAttribute("userNumId"));
-	System.out.println("member 생성 완료");//디버그용
-
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -70,7 +58,7 @@
 
               <div class="col-12">
                 <label for="address" class="form-label">아이디</label>
-                <input type="text" name="id" class="form-control" value="<%=member.getId()%>" id="address" placeholder="아이디 입력" required>
+                <input type="text" name="id" class="form-control" value="${member.id}" id="address" placeholder="아이디 입력" required>
                 <div class="invalid-feedback">
                   이 칸은 반드시 채워야 합니다.
                 </div>
@@ -78,7 +66,7 @@
 
               <div class="col-12">
                 <label for="address" class="form-label">비밀번호</label>
-                <input type="password" name="pw" readonly class="form-control" value="<%=member.getPw()%>" id="address" placeholder="비밀번호 입력" required>
+                <input type="password" name="pw" readonly class="form-control" value="${member.pw}" id="address" placeholder="비밀번호 입력" required>
                 <div class="invalid-feedback">
                   이 칸은 반드시 채워야 합니다.
                 </div>
@@ -86,7 +74,7 @@
 
               <div class="col-12">
                 <label for="address" class="form-label">이름</label>
-                <input type="text" name="name" class="form-control" value="<%=member.getName()%>" id="address" placeholder="이름 입력" required>
+                <input type="text" name="name" class="form-control" value="${member.name}" id="address" placeholder="이름 입력" required>
                 <div class="invalid-feedback">
                   이 칸은 반드시 채워야 합니다.
                 </div>
