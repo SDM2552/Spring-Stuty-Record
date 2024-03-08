@@ -10,46 +10,14 @@ import dto.Member;
 import encript.BCrypt;
 
 public class MemberDao {
-//	private static Connection conn;
 	private static MemberDao dao = new MemberDao();
 	private MemberDao() {	}
 	PreparedStatement pstmt;
 	ResultSet rs;
 	public static MemberDao getInstance() {
-//		MemberDao.getConnection();
 		return dao;
 	}
 
-//	public static void getConnection() {
-//		try {
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
-//			conn = DriverManager.getConnection(
-//					"jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
-//		} catch (ClassNotFoundException | SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-//	public Member selectForLogin(Connection conn, String id, String pw) { //로그인용
-//		Member member=null;
-//		String sql = "select * from smember where id=?";
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, id);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				if(BCrypt.checkpw(pw, rs.getString("pw"))) {
-//				member = new Member(rs.getInt("numId"), rs.getString("id"), rs.getString("pw"), rs.getString("name"));
-//				}
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return member;	
-//	}
 	public Member selectForLogin(Connection conn, String id, String pw) { //로그인용
 	    Member member = null;
 	    String sql = "SELECT * FROM smember WHERE id=?";
